@@ -4,6 +4,9 @@ import json
 import time
 
 app = Flask(__name__)
+app.debug = True
+test_db = Db()
+test_db.create_table()
 
 
 @app.route('/')
@@ -31,13 +34,3 @@ def insert_data():
     test_db.insert(data)
 
     return 'ok'
-
-
-if __name__ == '__main__':
-    test_db = Db()
-    test_db.create_table()
-    app.run(
-        host='0.0.0.0',
-        port=80,
-        debug=True
-    )
